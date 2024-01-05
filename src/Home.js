@@ -4,6 +4,7 @@ import { GlobalStyle } from './GlobalStyle';
 import Trusted from './components/Trusted';
 import Services from './components/Services';
 import Contact from './Contact';
+import FeatureProduct from './components/FeatureProduct';
 
 const Home = () => {
   const data ={
@@ -16,6 +17,7 @@ const Home = () => {
     <>
     <GlobalStyle/>
     <HeroSection mydata={data} mydata2={photo}/>
+    <FeatureProduct/>
     <Services/>
     <Trusted/>
     <Contact/>
