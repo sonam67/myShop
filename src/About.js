@@ -1,7 +1,8 @@
-import React from 'react'
+import { useProductContext } from "./context/productContext";
 import HeroSection from './components/HeroSection';
 
 const About = () => {
+  const { myName } = useProductContext();
   const data ={
     name: 'Ecommerce Plateform',
   }
@@ -11,7 +12,7 @@ const About = () => {
   return (
 
     <div>
-      
+      {myName}
       <HeroSection mydata={data} mydata2={photo}/>
     </div>
   );

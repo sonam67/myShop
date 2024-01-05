@@ -49,9 +49,9 @@ const Contact = () => {
       ></iframe>
       <div className="container">
        <div className="contact-form">
-          <form action="" className="contact-inputs">
-            <input type="text" placeholder="Enter your name" name="Name" value="" required autoComplete="off"></input>
-            <input type="email" placeholder="Enter your email" name="Email" value="" required autoComplete="off"></input>
+          <form action="https://formspree.io/f/mnqeqjro" method="POST" className="contact-inputs">
+            <input type="text" placeholder="Enter your name" name="Name"  required autoComplete="off"></input>
+            <input type="email" placeholder="Enter your email" name="Email"  required autoComplete="off"></input>
             <textarea name="message" placeholder="Enter your message" cols="25" rows="7" required autoComplete="off"></textarea>
             <input type="submit" value="Submit"></input>
           </form>
