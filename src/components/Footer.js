@@ -94,7 +94,7 @@ const Wrapper = styled.section`
       margin-bottom: 2.4rem;
     }
     p {
-      color: ${({ theme }) => theme.colors.white};
+      color: ${({ theme }) => theme.colors.black};
     }
     .footer-social--icons {
       display: flex;
@@ -103,10 +103,10 @@ const Wrapper = styled.section`
       div {
         padding: 1rem;
         border-radius: 50%;
-        border: 2px solid ${({ theme }) => theme.colors.white};
+        border: 2px solid ${({ theme }) => theme.colors.black};
 
         .icons {
-          color: ${({ theme }) => theme.colors.white};
+          color: ${({ theme }) => theme.colors.black};
           font-size: 2.4rem;
           position: relative;
           cursor: pointer;
@@ -120,7 +120,7 @@ const Wrapper = styled.section`
 
     hr {
       margin-bottom: 2rem;
-      color: ${({ theme }) => theme.colors.hr};
+      color: ${({ theme }) => theme.colors.black};
       height: 0.1px;
     }
   }

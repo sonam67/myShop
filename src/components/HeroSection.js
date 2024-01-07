@@ -71,7 +71,7 @@ const Wrapper = styled.section`
       content: "";
       width: 60%;
       height: 80%;
-      background-color: rgba(81, 56, 238, 0.4);
+      background-color: #f8ce46;
       position: absolute;
       left: 50%;
       top: -5rem;
