@@ -166,29 +166,29 @@ const Nav = () => {
       <div className={menuIcon?" navbar active" :"navbar"}>
         <ul className="navbar-lists">
           <li>
-            <NavLink to="/" className="navbar-link home-link" >
+            <NavLink to="/" className="navbar-link home-link" onClick={()=>setMenuIcon(false)} >
               Home
             </NavLink>
           </li>
           <li>
-            <NavLink to="/about" className="navbar-link home-link">
+            <NavLink to="/about" className="navbar-link home-link" onClick={()=>setMenuIcon(false)}>
               About
             </NavLink>
           </li>
           <li>
-            <NavLink to="/products" className="navbar-link home-link">
+            <NavLink to="/products" className="navbar-link home-link" onClick={()=>setMenuIcon(false)}>
               Product
             </NavLink>
           </li>
           <li>
-            <NavLink to="/contact" className="navbar-link home-link">
+            <NavLink to="/contact" className="navbar-link home-link" onClick={()=>setMenuIcon(false)}>
               Contact
             </NavLink>
           </li>
           <li>
             <NavLink to="/cart" className="navbar-link cart-trolley--link">
               <FiShoppingCart className="cart-trolley"/>
-              <span className="cart-trolley--item">10</span>
+              <span className="cart-trolley--item" onClick={()=>setMenuIcon(false)}>10</span>
             </NavLink>
           </li>
         </ul>
