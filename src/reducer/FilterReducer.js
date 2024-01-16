@@ -48,6 +48,15 @@ const FilterReducer = (state, action) => {
         filter_products: newSortData,
       };
 
+      case "UPDATE_FILTER_VALUE":
+        const{name,value}=action.payload;
+        return{
+          ...state,
+          filters:{
+            ...state.filters,
+          [name]:value,
+        }
+      }
     default:
       return state;
   }
