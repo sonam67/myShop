@@ -65,7 +65,7 @@ const FilterReducer = (state, action) => {
         const {text}=state.filters;
         if(text){
           tempFilterProducts=tempFilterProducts.filter((curElem)=>{
-            return curElem?.name?.toLowerCase()?.includes(text);
+            return curElem.name.toLowerCase().includes(text);
           });
         }
 
