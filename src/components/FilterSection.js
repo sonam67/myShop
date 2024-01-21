@@ -1,25 +1,57 @@
-import React from 'react'
-import styled from 'styled-components';
-import { useFilterContext } from '../context/filter_context';
-
+import React from "react";
+import styled from "styled-components";
+import { useFilterContext } from "../context/filter_context";
 
 const FilterSection = () => {
-  const {filters: {text},updateFilterValue}=useFilterContext();
+  const {
+    filters: { text,category},
+    all_products,
+    updateFilterValue,
+  } = useFilterContext();
+
+  const getUniqueData = (data, property) => {
+    let newVal = data.map((curElem) => {
+      return curElem[property];
+    });
+    return( newVal = ["All", ...new Set(newVal)]);
+   
+  };
+
+  const categoryOnlyData = getUniqueData(all_products, "category");
+
   return (
     <Wrapper>
-    <div className='filter-search'>
-      <form onSubmit={(e)=>e.preventDefault()}>
-        <input
-        type='text'
-        name='text'
-        value={text}
-        onChange={updateFilterValue}
-        />
-      </form>
-    </div>
+      <div className="filter-search">
+        <form onSubmit={(e) => e.preventDefault()}>
+          <input
+            type="text"
+            name="text"
+            placeholder="Search"
+            value={text}
+            onChange={updateFilterValue}
+          />
+        </form>
+      </div>
+      <div className="filter-category">
+        <h3>Category</h3>
+        <div>
+          {categoryOnlyData &&
+            categoryOnlyData.map((curElem, index) => {
+             return  <button
+                key={index}
+                type="button"
+                name="category"
+                value={curElem}
+                onClick={updateFilterValue}
+              >
+                {curElem}
+              </button>
+})}
+        </div>
+      </div>
     </Wrapper>
-  )
-}
+  );
+};
 const Wrapper = styled.section`
   padding: 5rem 0;
   display: flex;
@@ -127,4 +159,4 @@ const Wrapper = styled.section`
   }
 `;
 
-export default FilterSection
+export default FilterSection;
