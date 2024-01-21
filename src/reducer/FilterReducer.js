@@ -4,7 +4,7 @@ const FilterReducer = (state, action) => {
       return {
         ...state,
         filter_products: [...action.payload],
-        all_products: [action.payload],
+        all_products: [...action.payload],
       };
     case "SET_GRIDVIEW":
       return {
@@ -63,12 +63,16 @@ const FilterReducer = (state, action) => {
         let tempFilterProducts=[...all_products];
 
         const {text}=state.filters;
-        if(text){
-          tempFilterProducts=tempFilterProducts.filter((curElem)=>{
-            return curElem.name.toLowerCase().includes(text);
+        if (text) {
+          tempFilterProducts = tempFilterProducts.filter((curElem) => {
+            // Check if curElem and curElem.name are defined before accessing properties
+            if (curElem && curElem.name && typeof curElem.name === 'string') {
+              return curElem.name.toLowerCase().includes(text.toLowerCase());
+            }
+            return false; // Handle the case where curElem or curElem.name is undefined or not a string
           });
         }
-
+      
         return{
           ...state,
           filter_products:tempFilterProducts,

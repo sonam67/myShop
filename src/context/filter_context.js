@@ -36,8 +36,8 @@ export const FilterContextProvider=({children})=>{
         dispatch({type:"UPDATE_FILTER_VALUE",payload:{name,value}});
     }
     useEffect(()=>{
-        dispatch({type: "FILTER_PRODUCTS"});
         dispatch({type:"SORTING_PRODUCTS" });
+        dispatch({type: "FILTER_PRODUCTS"});
     },[products, state.sorting_value, state.filters]);
 
     useEffect(()=>{
