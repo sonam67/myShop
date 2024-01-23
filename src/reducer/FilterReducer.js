@@ -62,7 +62,7 @@ const FilterReducer = (state, action) => {
         let {all_products}=state;
         let tempFilterProducts=[...all_products];
 
-        const {text,category}=state.filters;
+        const {text,category,company}=state.filters;
         if (text) {
           tempFilterProducts = tempFilterProducts.filter((curElem) => {
             // Check if curElem and curElem.name are defined before accessing properties
@@ -77,6 +77,12 @@ const FilterReducer = (state, action) => {
             return curElem.category===category;
           });
         }
+        if(company){
+          tempFilterProducts=tempFilterProducts.filter((curElem)=>{
+            return curElem.company===company;
+          });
+        }
+        
       
         return{
           ...state,

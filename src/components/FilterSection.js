@@ -4,7 +4,7 @@ import { useFilterContext } from "../context/filter_context";
 
 const FilterSection = () => {
   const {
-    filters: { text,category},
+    filters: { text, category ,company},
     all_products,
     updateFilterValue,
   } = useFilterContext();
@@ -13,11 +13,11 @@ const FilterSection = () => {
     let newVal = data.map((curElem) => {
       return curElem[property];
     });
-    return( newVal = ["All", ...new Set(newVal)]);
-   
+    return (newVal = ["All", ...new Set(newVal)]);
   };
 
   const categoryOnlyData = getUniqueData(all_products, "category");
+  const companyData = getUniqueData(all_products, "company");
 
   return (
     <Wrapper>
@@ -37,17 +37,31 @@ const FilterSection = () => {
         <div>
           {categoryOnlyData &&
             categoryOnlyData.map((curElem, index) => {
-             return  <button
-                key={index}
-                type="button"
-                name="category"
-                value={curElem}
-                onClick={updateFilterValue}
-              >
-                {curElem}
-              </button>
-})}
+              return (
+                <button
+                  key={index}
+                  type="button"
+                  name="category"
+                  value={curElem}
+                  onClick={updateFilterValue}
+                >
+                  {curElem}
+                </button>
+              );
+            })}
         </div>
+      </div>
+      <div className="filter-company">
+          <h3>Company</h3>
+          <select className="filter-company--select" name="company" id="company" onClick={updateFilterValue} >
+            {
+              companyData.map((curElem,index)=>{
+                return(
+                  <option key={index} value={curElem} name="company">{curElem}</option>
+                )
+              })
+            }
+          </select>
       </div>
     </Wrapper>
   );
