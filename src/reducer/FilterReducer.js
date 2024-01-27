@@ -62,7 +62,7 @@ const FilterReducer = (state, action) => {
         let {all_products}=state;
         let tempFilterProducts=[...all_products];
 
-        const {text,category}=state.filters;
+        const {text,category, company, color}=state.filters;
         if (text) {
           tempFilterProducts = tempFilterProducts.filter((curElem) => {
             // Check if curElem and curElem.name are defined before accessing properties
@@ -72,12 +72,21 @@ const FilterReducer = (state, action) => {
             return false; // Handle the case where curElem or curElem.name is undefined or not a string
           });
         }
-        if(category!=="All"){
+        if(category!=="all"){
           tempFilterProducts=tempFilterProducts.filter((curElem)=>{
             return curElem.category===category;
           });
         }
-      
+        if (company !== "all") {
+          tempFilterProducts = tempFilterProducts.filter(
+            (curElem) => curElem.company.toLowerCase() === company.toLowerCase()
+          );
+        }
+        if (color !== "all") {
+          tempFilterProducts = tempFilterProducts.filter((curElem) =>
+            curElem.colors.includes(color)
+          );
+        }
         return{
           ...state,
           filter_products:tempFilterProducts,
