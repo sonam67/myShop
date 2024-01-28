@@ -8,23 +8,21 @@ const MyImage = ({imgs=[{url:""}]}) => {
       }
   return (
     <Wrapper>
-     <div className='grid grid-four-column'>
-        {imgs.map((curElem,index)=>{
-            return( <figure >
-                <img 
-                src={curElem.url} 
-                alt={curElem.filename} 
-                key={index}
-                onClick={()=>setMainimage(curElem)}
-                className='box-image--style'>
-
-                </img>
-            </figure>);
-        })}
-     </div>
-     <div className='main-screen'>
-        <img src={Mainimage.url} alt={Mainimage.filename}></img>
-     </div>
+      <div className='grid grid-four-column'>
+        {imgs.map((curElem, index) => (
+          <figure key={index}>
+            <img
+              src={curElem.url}
+              alt={curElem.filename}
+              onClick={() => setMainimage(curElem)}
+              className='box-image--style'
+            />
+          </figure>
+        ))}
+      </div>
+      <div className='main-screen'>
+        <img src={Mainimage.url} alt={Mainimage.filename} />
+      </div>
     </Wrapper>
   )
 };
