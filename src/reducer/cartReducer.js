@@ -1,11 +1,7 @@
 const cartReducer = (state, action) => {
     if (action.type === "ADD_TO_CART") {
-      let { id, color, amount, product } = action.payload;
-      // console.log(
-      //   "🚀 ~ file: cartReducer.js ~ line 4 ~ cartReducer ~ product",
-      //   product
-      // );
-  
+      let { id,product,color,amount } = action.payload;
+    
       let cartProduct;
   
       cartProduct = {
@@ -13,7 +9,7 @@ const cartReducer = (state, action) => {
         name: product.name,
         color,
         amount,
-        image: product.image,
+        image: product.image[0].url,
         price: product.price,
         max: product.stock,
       };

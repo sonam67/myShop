@@ -5,6 +5,7 @@ import Cartitem from "./components/Cartitem";
 const Cart = () => {
   const {cart}=useCartContext();
 console.log(cart);
+
   return <Wrapper>
     <div className="container">
       <div className="cart_heading grid grid-five-column">
