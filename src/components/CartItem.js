@@ -6,13 +6,8 @@ import { useCartContext } from "../context/cart_context";
 
 
 const Cartitem = ({ name, price, amount, image, color, id }) => {
-  const setIncrease=()=>{
-    
-  };
-  const setDecrease=()=>{
-    
-  }
-const {removeItem}=useCartContext();
+  
+const {removeItem,setDecrease, setIncrease}=useCartContext();
 
   return (
     <div className="cart_heading grid grid-five-column">
@@ -40,8 +35,8 @@ const {removeItem}=useCartContext();
     </div>
     <CartAmountToggel
         amount={amount}
-        setIncrease={setIncrease}
-        setDecrease={setDecrease}
+        setIncrease={()=>setIncrease(id)}
+        setDecrease={()=>setDecrease(id)}
       />
 
       <div className="cart-hide">

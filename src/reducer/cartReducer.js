@@ -47,7 +47,7 @@ const cartReducer = (state, action) => {
   }
 
   // to set the increment and decrement
-  if (action.type === "SET_DECREMENT") {
+  if (action.type === "SET_DECREAMENT") {
     let updatedProduct = state.cart.map((curElem) => {
       if (curElem.id === action.payload) {
         let decAmount = curElem.amount - 1;
@@ -67,7 +67,7 @@ const cartReducer = (state, action) => {
     return { ...state, cart: updatedProduct };
   }
 
-  if (action.type === "SET_INCREMENT") {
+  if (action.type === "SET_INCREAMENT") {
     let updatedProduct = state.cart.map((curElem) => {
       if (curElem.id === action.payload) {
         let incAmount = curElem.amount + 1;
@@ -86,6 +86,8 @@ const cartReducer = (state, action) => {
     });
     return { ...state, cart: updatedProduct };
   }
+
+
 
   if (action.type === "REMOVE_ITEM") {
     let updatedCart = state.cart.filter(
