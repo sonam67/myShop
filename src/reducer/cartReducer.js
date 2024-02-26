@@ -34,7 +34,7 @@ const cartReducer = (state, action) => {
         name: product.name,
         color,
         amount,
-        image: product.image[0].url,
+        image: product.image && product.image.length > 0 ? product.image[0].url : '',
         price: product.price,
         max: product.stock,
       };
@@ -136,24 +136,24 @@ const cartReducer = (state, action) => {
   // }
 
   if (action.type === "CART_ITEM_PRICE_TOTAL") {
-    let { total_item, total_price } = state.cart.reduce(
+    let { total_item, total_amount} = state.cart.reduce(
       (accum, curElem) => {
         let { price, amount } = curElem;
 
         accum.total_item += amount;
-        accum.total_price += price * amount;
+        accum.total_amount += price * amount;
 
         return accum;
       },
       {
         total_item: 0,
-        total_price: 0,
+        total_amount: 0,
       }
     );
     return {
       ...state,
       total_item,
-      total_price,
+      total_amount,
     };
   }
 
