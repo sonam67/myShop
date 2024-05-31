@@ -1,8 +1,14 @@
 const cartReducer = (state, action) => {
+  console.log('Action received:', action);
+  console.log('Current state:', state);
+
   if (action.type === "ADD_TO_CART") {
     let { id, color, amount, product } = action.payload;
 
-    // tackle the existing product
+    if (!id || !color || !amount || !product) {
+      console.error('ADD_TO_CART action payload is missing properties');
+      return state;
+    }
 
     let existingProduct = state.cart.find(
       (curItem) => curItem.id === id + color
@@ -46,7 +52,6 @@ const cartReducer = (state, action) => {
     }
   }
 
-  // to set the increment and decrement
   if (action.type === "SET_DECREAMENT") {
     let updatedProduct = state.cart.map((curElem) => {
       if (curElem.id === action.payload) {
@@ -87,8 +92,6 @@ const cartReducer = (state, action) => {
     return { ...state, cart: updatedProduct };
   }
 
-
-
   if (action.type === "REMOVE_ITEM") {
     let updatedCart = state.cart.filter(
       (curItem) => curItem.id !== action.payload
@@ -106,37 +109,8 @@ const cartReducer = (state, action) => {
     };
   }
 
-  // if (action.type === "CART_TOTAL_ITEM") {
-  //   let updatedItemVal = state.cart.reduce((initialVal, curElem) => {
-  //     let { amount } = curElem;
-
-  //     initialVal = initialVal + amount;
-  //     return initialVal;
-  //   }, 0);
-
-  //   return {
-  //     ...state,
-  //     total_item: updatedItemVal,
-  //   };
-  // }
-
-  // if (action.type === "CART_TOTAL_PRICE") {
-  //   let total_price = state.cart.reduce((initialVal, curElem) => {
-  //     let { price, amount } = curElem;
-
-  //     initialVal = initialVal + price * amount;
-
-  //     return initialVal;
-  //   }, 0);
-
-  //   return {
-  //     ...state,
-  //     total_price,
-  //   };
-  // }
-
   if (action.type === "CART_ITEM_PRICE_TOTAL") {
-    let { total_item, total_amount} = state.cart.reduce(
+    let { total_item, total_amount } = state.cart.reduce(
       (accum, curElem) => {
         let { price, amount } = curElem;
 
@@ -161,4 +135,3 @@ const cartReducer = (state, action) => {
 };
 
 export default cartReducer;
-
